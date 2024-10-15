@@ -1,6 +1,5 @@
 import OpenAI from 'openai';
 
-
 const openai = new OpenAI({
     apiKey: '', // Replace with your OpenAI API key
     dangerouslyAllowBrowser: true
@@ -31,7 +30,8 @@ if (submitButton && captchaInput && responseContainer) {
                 max_tokens: 100,
             });
 
-            responseContainer.innerHTML = response.choices?.[0]?.message?.content?.trim() || "No response from AI.";
+            const responseText = response.choices?.[0]?.message?.content?.trim() || "No response from AI.";
+            animateText(responseText);
             responseContainer.classList.add('filled');
         } catch (error) {
             console.error('Error with OpenAI API:', error);
@@ -39,14 +39,31 @@ if (submitButton && captchaInput && responseContainer) {
         }
     });
 
-
     captchaInput.addEventListener('input', () => autoExpand(captchaInput));
 } else {
     console.error('Required elements not found in the DOM.');
 }
 
-
 function autoExpand(textarea: HTMLTextAreaElement) {
     textarea.style.height = 'auto';
     textarea.style.height = textarea.scrollHeight + 'px';
+}
+
+function animateText(text: string) {
+    responseContainer.innerHTML = ''; // Clear previous content
+    let currentIndex = 0;
+
+    function renderNextChar() {
+        if (currentIndex < text.length) {
+            const char = text[currentIndex];
+            const span = document.createElement('span');
+            span.textContent = char;
+            responseContainer.appendChild(span);
+            currentIndex++;
+            setTimeout(renderNextChar, 50); // Adjust the delay as needed
+        }
+    }
+
+    responseContainer.style.textAlign = 'center';
+    renderNextChar();
 }
