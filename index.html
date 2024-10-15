@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPTCHA Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="header">
+    <h1>AI CAPTCHA</h1>
+    <h2>Prove to an AI that you are not an AI by convincing it</h2>
+    <div class="container">
+        <textarea id="captcha-input" placeholder="Enter CAPTCHA" class="captcha-input" oninput="autoExpand(this)"></textarea>
+        <button id="submit-button" class="submit-button">Confirm</button>
+    </div>
+</div>
+<div class="response-container" id="response-container"></div>
+<script>
+    function autoExpand(textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+    }
+</script>
+<script type="module" src="/src/index.ts"></script>
+</body>
+</html>

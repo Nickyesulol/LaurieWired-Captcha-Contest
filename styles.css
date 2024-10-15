@@ -1,0 +1,98 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin: 20px auto 0; /* Margin to keep the content at the top */
+}
+
+h1, h2 {
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+    margin: 10px 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.captcha-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #111;
+    color: #0ff;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+    resize: none;
+    overflow: hidden;
+    min-height: 1.5em; /* Initial size of one line */
+    line-height: 1.5;
+}
+
+.captcha-input::placeholder {
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #111;
+    color: #0ff;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #222;
+}
+
+.response-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #0ff;
+    border-radius: 5px;
+    background-color: #111;
+    color: #0ff;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+    min-height: 50px; /* Thicker container */
+    position: relative;
+}
+
+.response-container::before {
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+    content: 'RESPONSE';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.response-container.filled::before {
+    content: '';
+}
